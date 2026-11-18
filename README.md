@@ -1,5 +1,7 @@
 # Dharma Protocol for Agent Systems
 
+[![tests](https://github.com/asbelcas/dharma-protocol/actions/workflows/ci.yml/badge.svg)](https://github.com/asbelcas/dharma-protocol/actions/workflows/ci.yml)
+
 **Status:** draft charter v0.1+rev2 (2026-10-26; rev1 red-team 2026-10-23, rev2 full-corpus audit 2026-10-26 — dispositions in `day-12-audit.md` of the working corpus). Not a standard, not a legal instrument.
 Binds only the originating operation's agents until a human chooses otherwise.
 
