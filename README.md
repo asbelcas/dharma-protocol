@@ -2,7 +2,7 @@
 
 [![tests](https://github.com/asbelcas/dharma-protocol/actions/workflows/ci.yml/badge.svg)](https://github.com/asbelcas/dharma-protocol/actions/workflows/ci.yml)
 
-**Status:** draft charter v0.1+rev2 (2026-10-26; rev1 red-team 2026-10-23, rev2 full-corpus audit 2026-10-26 — dispositions in `day-12-audit.md` of the working corpus). Not a standard, not a legal instrument.
+**Status:** draft charter v0.1+rev2 (2026-10-26; rev1 red-team 2026-10-23, rev2 full-corpus audit 2026-10-26 — dispositions in `day-12-audit.md` of the working corpus). **Published draft** — this repo is public (since 2026-10-31); not formally adopted as a standard, not a legal instrument.
 Binds only the originating operation's agents until a human chooses otherwise.
 
 A five-article operating charter for agent systems — truthful claims, bonded outputs,
@@ -36,7 +36,9 @@ DHARMA-13 working corpus — see [Provenance](#provenance).
 dispositions in `day-12-audit.md`). rev1 followed the Day-8 red-team (Codex
 job_20261023T155056Z_50d0c974, critique in `day-08-codex-redteam.md`). ChatGPT advisory
 leg blocked by Cloudflare challenge — pending (see `day-08-charter.md`). Draft; not
-published; binds only this operation's agents until a human chooses otherwise.
+published *(editor's note 2026-11-19: pre-publication artifact wording — this repo is
+public since 2026-10-31; treat as "Published draft; not formally adopted as a
+standard")*; binds only this operation's agents until a human chooses otherwise.
 **rev2 changes (no semantic shifts to article obligations):** A1(c) implementation claim
 scoped to what the instrument does (requires the outcome-check *binding*; executing the
 check is the operator's duty); A2 records gain the evidence pointer as an enforced field;
@@ -150,9 +152,12 @@ call (Day 10 prepares drafts; the human decides what ships).
 Six translations, each with round-trip verification (translate → back-translate →
 section-by-section drift report; two material findings found and remediated same-day,
 then independently re-verified). The evidence ships in this repo: `charter/i18n/drift/`
-and `charter/i18n/roundtrip/`. Note (Day-12 audit): the translations' A1(c)/A2/L1
-sections mirror rev1 — see the rev2 notices atop each file and the i18n README addendum;
-re-verification of those sections is queued. Method: `charter/i18n/README.md`.
+and `charter/i18n/roundtrip/`. **Day-13 re-verification (2026-10-27):** all six
+translations' A1(c)/A2/L1/Status sections now mirror the English v0.1+rev2 text —
+fr/zh independent-leg PASS; hi/ar/sw/es PASS WITH NOTES (single-operator, method
+disclosed in each `roundtrip/<code>.rev2-check.md`); the three Day-12 accepted-open
+items (sw ×2, es ×1) are cleared. Method and dispositions: `charter/i18n/README.md`
+(Day-13 addendum) and `charter/i18n/drift/<code>.md`.
 
 | Code | Language | File | Verification verdict |
 |------|----------|------|----------------------|
