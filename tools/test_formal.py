@@ -26,4 +26,19 @@ class F(unittest.TestCase):
         self.assertTrue(c.recompute_ok(list(c.entries)))   # stored raws recompute
         h1, raw1 = c.entries[1]
         self.assertFalse(c.recompute_ok([(h1, "EVIL")]))  # tampered pair rejected
+    def test_chain_full_replacement_rejected_by_anchor(self):
+        c = Chain(); c.add("claim A"); c.add("claim B")
+        tip, n = c.prev, len(c.entries)
+        forged = Chain(); forged.add("forged A"); forged.add("forged B")
+        self.assertTrue(forged.verify())                        # forged chain self-consistent...
+        self.assertFalse(forged.verify(expected_tip=tip, expected_len=n))  # ...anchor rejects it
+        self.assertFalse(forged.verify(expected_tip=tip))       # tip alone suffices
+        self.assertTrue(c.verify(expected_tip=tip, expected_len=n))        # genuine chain passes
+    def test_chain_truncation_rejected_by_anchor(self):
+        c = Chain(); c.add("A"); c.add("B"); c.add("C")
+        tip, n = c.prev, len(c.entries)
+        t = Chain(); t.entries = list(c.entries[:2]); t.prev = t.entries[-1][0]
+        self.assertTrue(t.verify())                             # truncated prefix self-consistent...
+        self.assertFalse(t.verify(expected_tip=tip, expected_len=n))       # ...count catches it
+        self.assertFalse(t.verify(expected_tip=tip))            # tip alone catches it
 if __name__ == "__main__": unittest.main(verbosity=0)

@@ -8,13 +8,19 @@ class Chain:
         raw = f"{time.time()}|{event}"
         h = hashlib.sha256((s.prev + raw).encode()).hexdigest()
         s.entries.append((h, raw)); s.prev = h; return h
-    def verify(s):
+    def verify(s, expected_tip=None, expected_len=None):
         """Recompute the chain from stored raws. True only if every entry is intact
-        and in order; any tampering with (h, raw) pairs is detected."""
+        and in order; any tampering with (h, raw) pairs is detected.
+        expected_tip / expected_len = an anchored checkpoint supplied out-of-band
+        (e.g. published after each append). A fully replaced self-consistent chain
+        or a truncated chain fails the anchored check even though plain internal
+        recomputation cannot distinguish them from the genuine chain."""
+        if expected_len is not None and len(s.entries) != expected_len: return False
         p = "GENESIS"
         for h, raw in s.entries:
             if hashlib.sha256((p + raw).encode()).hexdigest() != h: return False
             p = h
+        if expected_tip is not None and p != expected_tip: return False
         return True
     def recompute_ok(s, raw_pairs):
         """Independent check: given (h, raw) pairs from an external copy, recompute.
