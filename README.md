@@ -180,7 +180,18 @@ items (sw ×2, es ×1) are cleared. Method and dispositions: `charter/i18n/READM
 cd tools && python3 -m pytest
 ```
 
-19/19 tests green as of 2026-10-26. Honest status, per the charter's own A2 note: this
+Install (stdlib-only, no third-party dependencies; Python ≥ 3.10):
+
+```
+pip install .        # from a clone of this repo; installs bondattest, hashchain, sim_econ
+python -c "from hashchain import Chain; c = Chain(); c.add('hello'); assert c.verify()"
+```
+
+Running from the repo without installing works too — `python3 -m pytest tools/ -q`
+from the repo root.
+
+21/21 tests green as of 2026-11-20 (hashchain gained anchored-checkpoint verification,
+`verify(expected_tip=..., expected_len=...)`, on that date). Honest status, per the charter's own A2 note: this
 instrument enforces an **attestation format** — it does not yet escrow value or execute
 payouts, and the economics simulation makes simplified discovery assumptions. L1
 conformance means "attestation format enforced," not "bond market live."

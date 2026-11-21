@@ -1,0 +1,15 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "dharma-tools"
+version = "0.1.0"
+description = "Dharma Protocol reference instruments: bonded-attestation format checker, tamper-evident hashchain, assumption-bound economics simulation"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = []
+
+[tool.setuptools]
+package-dir = {"" = "tools"}
+py-modules = ["bondattest", "hashchain", "sim_econ"]
