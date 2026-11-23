@@ -39,9 +39,11 @@ ok, why = certify(ledger, d)   # → (True, "outcome-linked")  — every format 
 
 After the challenge window elapses with no challenge *recorded in this ledger*
 (which the operator controls — the ledger is an in-memory list, or a file only the
-operator writes), `Attestation.status()` returns **"certified-full"** for a claim
-that is entirely fabricated. The bond of 1,000,000 USD moved zero value: there is no
-escrow, and `bond_amount > 0` is satisfied by any number.
+operator writes), `Attestation.status()` returns **"certified-partial"** — and only
+**"certified-full"** once a further 30 days pass after the window
+(`now >= t0 + W + 30*86400`) — for a claim that is entirely fabricated. The bond of
+1,000,000 USD moved zero value: there is no escrow, and `bond_amount > 0` is
+satisfied by any number.
 
 ## Exactly which protections are absent
 
